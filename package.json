@@ -11,7 +11,7 @@
     "access": "public"
   },
   "bin": {
-    "mason": "./bin/init.js"
+    "mason-cli": "./bin/init.js"
   },
   "scripts": {
     "test": "jest",

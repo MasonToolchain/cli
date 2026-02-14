@@ -3,7 +3,9 @@ name: Node.js Package
 on:
   release:
     types: [created] # 仅当创建 Release 时触发
-  workflow_dispatch:
+  push:
+    branches:
+      - master         #仅当 push 到 main 分支时触发
 
 permissions:
   contents: write
@@ -13,15 +15,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           registry-url: 'https://registry.npmjs.org'
+      - name: Set up Git user
+        run: |
+          git config --global user.name "一勺"
+          git config --global user.email "547471919@qq.com"
+      - name: Bump version (optional)
+        run: npm version patch # 自动更新版本号
+      - name: Commit changes (if needed)
+        run: |
+          git add .
+          git commit -m "Bump version" || echo "No changes to commit"
+          git push origin master
       - name: npm install
-        run: npm ci
+        run: npm install
       - name: Rollup build
         run: npm run build
      
