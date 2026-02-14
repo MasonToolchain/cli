@@ -193,6 +193,15 @@ mason-cli statistics
 
 - 会跳过部分目录/文件：`.git`、`node_modules`、`.vscode`、`package.json` 等（详见实现中的 `excludesFiles`）。
 
+## 开发规范
+
+在进行 CLI 的新增功能开发或脚本修改时，请务必阅读根目录下的 [ACTIONS.md](./ACTIONS.md)。
+
+主要要求包括：
+- 每次新增脚本或命令后，必须更新根目录的 README.md 以及本目录的 README.md。
+- 遵循统一的参数命名（如 --overwrite）。
+- 文档中禁止使用 icon/emoji。
+
 ## CLI 目录结构
 
 ```text
