@@ -5,7 +5,7 @@ on:
     types: [created] # 仅当创建 Release 时触发
   push:
     branches:
-      - main         #仅当 push 到 main 分支时触发
+      - master         #仅当 push 到 master 分支时触发
 
 jobs:
   publish:
