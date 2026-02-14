@@ -1,0 +1,27 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# test coverage
+coverage/
+
+# lockfiles (如果你只想保留其中一种可以手动调整)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
