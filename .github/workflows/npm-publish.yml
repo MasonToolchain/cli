@@ -24,8 +24,8 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Set up Git user
         run: |
-          git config --global user.name "Your Name"
-          git config --global user.email "youremail@example.com"
+          git config --global user.name "一勺"
+          git config --global user.email "547471919@qq.com"
       - name: Bump version (optional)
         run: npm version patch # 自动更新版本号
       - name: Commit changes (if needed)
