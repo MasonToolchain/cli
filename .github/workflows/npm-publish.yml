@@ -7,12 +7,17 @@ on:
     branches:
       - master         #仅当 push 到 master 分支时触发
 
+permissions:
+  contents: write
+
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -24,11 +29,9 @@ jobs:
           git config --global user.name "yishao"
           git config --global user.email "547471919@qq.com"
       - name: Bump version (optional)
-        run: npm version patch # 自动更新版本号
+        run: npm version patch -m "chore: bump version to %s [skip ci]" # 自动更新版本号并添加 [skip ci]
       - name: Commit changes (if needed)
         run: |
-          git add .
-          git commit -m "Bump version" || echo "No changes to commit"
           git push origin master
       - name: npm install
         run: npm install
