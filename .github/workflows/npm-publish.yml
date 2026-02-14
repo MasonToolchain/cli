@@ -5,7 +5,7 @@ on:
     types: [created] # 仅当创建 Release 时触发
   push:
     branches:
-      - master         #仅当 push 到 master 分支时触发
+      - master         #仅当 push 到 main 分支时触发
 
 permissions:
   contents: write
@@ -15,23 +15,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
           node-version: 20
           registry-url: 'https://registry.npmjs.org'
       - name: Set up Git user
         run: |
-          git config --global user.name "yishao"
-          git config --global user.email "547471919@qq.com"
+          git config --global user.name "Your Name"
+          git config --global user.email "youremail@example.com"
       - name: Bump version (optional)
-        run: npm version patch -m "chore: bump version to %s [skip ci]" # 自动更新版本号并添加 [skip ci]
+        run: npm version patch # 自动更新版本号
       - name: Commit changes (if needed)
         run: |
+          git add .
+          git commit -m "Bump version" || echo "No changes to commit"
           git push origin master
       - name: npm install
         run: npm install
