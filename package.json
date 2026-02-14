@@ -1,5 +1,5 @@
 {
-  "name": "mason-cli",
+  "name": "@noahlife/mason-cli",
   "main": "dist/index.cjs",
   "files": [
     "dist",
@@ -7,8 +7,11 @@
   ],
   "version": "1.0.1",
   "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
   "bin": {
-    "mason-admin": "./bin/init.js"
+    "mason": "./bin/init.js"
   },
   "scripts": {
     "test": "jest",

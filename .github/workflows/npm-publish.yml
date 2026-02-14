@@ -3,9 +3,7 @@ name: Node.js Package
 on:
   release:
     types: [created] # 仅当创建 Release 时触发
-  push:
-    branches:
-      - master         #仅当 push 到 main 分支时触发
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -22,19 +20,8 @@ jobs:
         with:
           node-version: 20
           registry-url: 'https://registry.npmjs.org'
-      - name: Set up Git user
-        run: |
-          git config --global user.name "一勺"
-          git config --global user.email "547471919@qq.com"
-      - name: Bump version (optional)
-        run: npm version patch # 自动更新版本号
-      - name: Commit changes (if needed)
-        run: |
-          git add .
-          git commit -m "Bump version" || echo "No changes to commit"
-          git push origin master
       - name: npm install
-        run: npm install
+        run: npm ci
       - name: Rollup build
         run: npm run build
      
